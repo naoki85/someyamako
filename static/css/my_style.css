@@ -1,0 +1,30 @@
+@charset "utf-8";
+/*=============================================
+      index用css
+=============================================*/
+
+/*clearfix*/
+.clearfix:after {
+    content:" ";
+    display:block;
+    clear:both;
+}
+
+.main {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.majan_container {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 2%;
+}
+.majan_container li {
+  float: left;
+  width: 7%;
+}
+.majan_container li img {
+  width: 100%;
+  height: auto;
+}

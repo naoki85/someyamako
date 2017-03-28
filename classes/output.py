@@ -10,7 +10,7 @@ class Output:
 
     def write_in_csv(self, my_hand, tile):
         u"""
-        結果をpickelに書き込みます。
+        結果をCSVに書き込みます。
         """
         csv_filepath = self.csv_dirpath + '/results.csv'
         csvlist = []

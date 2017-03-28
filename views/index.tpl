@@ -1,6 +1,6 @@
 % rebase('base.tpl')
 <style>
-button {
+.tile {
     background-color: transparent;
     border: none;
 }
@@ -8,7 +8,7 @@ button {
 <script>
 $(function() {
     $('.tile').on('click', function() {
-        tile = $(this).val();
+        tile = $(this).data('tile');
         html_input = '<input name="tile" type="hidden" value="' + tile + '" />';
         $('#input_hidden_area').html(html_input);
     });
@@ -18,18 +18,16 @@ $(function() {
     <div class="well well-lg" style="text-align: left;">
         何切る？
     </div>
-    <div style="width: 100%;">
-        <table>
-            <tr>
-                % for hand in random_hand:
-                    <td>
-                        <button class="tile" value="{{hand}}">
-                            <img src="img/{{hand}}.gif">
-                        </button>
-                    </td>
-                % end
-            </tr>
-        </table>
+    <div class="main">
+        <ul class="majan_container clearfix">
+            % for hand in random_hand:
+                <li>
+                     <div class="tile" data-tile="{{hand}}">
+                        <img src="img/{{hand}}.gif">
+                    </div>
+                </li>
+            % end
+        </ul>
     </div>
     <hr>
     <form action="show_result" method="post">
