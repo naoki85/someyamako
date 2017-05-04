@@ -1,4 +1,4 @@
-import os, csv
+import os, csv, pickle
 
 class Output:
     u"""
@@ -25,4 +25,15 @@ class Output:
 
         return
 
+    def write_in_pickle(self, weight_parameter, bias_parameter):
+        u"""
+        結果をpickelに書き込みます。
+        """
+        pickle_filepath = os.getcwd() + '/pickle/output_results.pickle'
+        results = {}
+        results['W'] = weight_parameter
+        results['b'] = bias_parameter
+
+        with open(pickle_filepath, 'wb') as f:
+            writer = pickle.dump(results, f)
 
