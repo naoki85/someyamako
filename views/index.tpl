@@ -1,19 +1,4 @@
 % rebase('base.tpl')
-<style>
-.tile {
-    background-color: transparent;
-    border: none;
-}
-</style>
-<script>
-$(function() {
-    $('.tile').on('click', function() {
-        tile = $(this).data('tile');
-        html_input = '<input name="tile" type="hidden" value="' + tile + '" />';
-        $('#input_hidden_area').html(html_input);
-    });
-});
-</script>
 <div style="text-align: center; width: 100%;">
     <div class="well well-lg" style="text-align: left;">
         何切る？

@@ -37,7 +37,7 @@ footer,header,hgroup,menu,nav,section {
 }
 
 nav ul {
-    list-style:none;
+    list-style: none;
 }
 
 blockquote, q {
@@ -99,4 +99,8 @@ hr {
 
 input, select {
     vertical-align:middle;
+}
+
+ul {
+    list-style: none;
 }

@@ -5,6 +5,7 @@ from classes.mahjang import *
 from classes.output import *
 from config.http_conf import *
 
+@get('/')
 @get('/index')
 def index():
     random_hand = Mahjang().random_set_hand()
@@ -16,7 +17,7 @@ def show_result():
     tile = request.forms.get('tile')
     hand_convert_to_list = hand.replace('[', '').replace(']', '').split(', ')
     Output().write_in_csv(hand_convert_to_list, tile)
-    redirect('/index')
+    redirect('/')
 
 @route('/<filename:path>')
 def static(filename):

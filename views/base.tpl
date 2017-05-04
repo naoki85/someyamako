@@ -15,6 +15,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!-- My style theme -->
     <link rel="stylesheet" type="text/css" href="css/my_style.css">
+    <!-- My javascript -->
+    <script src="js/my_script.js" type="text/javascript"></script>
 </head>
 <body>
     {{!base}}
