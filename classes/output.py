@@ -19,6 +19,8 @@ class Output:
         csvlist.append(dora)
         csvlist.append(tile)
 
+        print(csvlist)
+        print(csv_filepath)
         with open(csv_filepath, 'a') as f:
             writer = csv.writer(f, lineterminator='\n')
             writer.writerow(csvlist)
