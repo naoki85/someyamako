@@ -8,15 +8,18 @@ from config.http_conf import *
 @get('/')
 @get('/index')
 def index():
-    random_hand = Mahjang().random_set_hand()
-    return template('index', random_hand=random_hand)
+    mahjang = Mahjang()
+    dora = mahjang.get_dora()
+    random_hand = mahjang.random_set_hand()
+    return template('index', random_hand=random_hand, dora=dora)
 
 @post('/show_result')
 def show_result():
     hand = request.forms.get('hand')
     tile = request.forms.get('tile')
+    dora = request.forms.get('dora')
     hand_convert_to_list = hand.replace('[', '').replace(']', '').split(', ')
-    Output().write_in_csv(hand_convert_to_list, tile)
+    Output().write_in_csv(hand_convert_to_list, tile, dora)
     redirect('/')
 
 @route('/<filename:path>')

@@ -28,6 +28,7 @@ class Mahjang:
         配牌をランダムにセットします。
         """
         my_hand = random.sample(self.wall, 14)
+        my_hand.sort()
         return my_hand
 
     def load_csv_data(self):
@@ -36,6 +37,10 @@ class Mahjang:
         """
         hands, results = self.set_hands_and_results_from_csv_file()
         return self.hands_and_results_convert_to_matrix(hands, results)
+
+    def get_dora(self):
+        list_dora = random.sample(self.tiles, 1)
+        return list_dora[0]
 
     def set_hands_and_results_from_csv_file(self):
         u"""

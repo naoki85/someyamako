@@ -3,7 +3,20 @@
       index用css
 =============================================*/
 
-/*clearfix*/
+/* Common */
+.h-align-center {
+  text-align: center;
+}
+.h-align-left {
+  text-align: left;
+}
+.h-align-right {
+  text-align: right;
+}
+.mb-default {
+  margin-bottom: 20px;
+}
+
 .clearfix:after {
     content:" ";
     display:block;
@@ -28,7 +41,7 @@
   width: 100%;
   height: auto;
 }
-.tile {
+.tile, .dora {
   background-color: transparent;
   border: none;
 }

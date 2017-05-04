@@ -8,7 +8,7 @@ class Output:
         # CSVを格納しているディレクトリのパス
         self.csv_dirpath = os.getcwd() + '/csv'
 
-    def write_in_csv(self, my_hand, tile):
+    def write_in_csv(self, my_hand, tile, dora):
         u"""
         結果をCSVに書き込みます。
         """
@@ -16,8 +16,8 @@ class Output:
         csvlist = []
         for hand in my_hand:
             csvlist.append(hand)
+        csvlist.append(dora)
         csvlist.append(tile)
-        print(csvlist)
 
         with open(csv_filepath, 'a') as f:
             writer = csv.writer(f, lineterminator='\n')
