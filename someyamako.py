@@ -1,9 +1,10 @@
-# モジュールの読み込み
+# -*- coding:utf-8 -*-
+#! /usr/bin/python3.6
 import os
 from bottle import route, get, post, run, template, request, static_file, redirect
-from classes.mahjang import *
-from classes.output import *
-from config.http_conf import *
+from mahjang import *
+from output import *
+from http_conf import *
 
 @get('/')
 @get('/index')
