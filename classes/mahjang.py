@@ -1,5 +1,4 @@
 # -*- coding:utf-8 -*-
-#! /usr/bin/python3.6
 import sys, os, random, csv
 import numpy as np
 

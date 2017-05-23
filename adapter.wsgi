@@ -1,5 +1,4 @@
 # -*- coding:utf-8 -*-
-#! /usr/bin/python3.6
 import sys, os
 dirpath = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(dirpath)
