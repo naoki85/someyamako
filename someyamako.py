@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+#! /usr/bin/python3.6
 import os
 from bottle import route, get, post, run, template, request, static_file, redirect
 from mahjang import *
