@@ -9,7 +9,8 @@ class Network:
 
     def __init__(self, weight_init_std=0.01):
         self.params = {}
-        self.params['W'] = weight_init_std * np.random.randn(9, 9)
+        self.params['W1'] = weight_init_std * np.random.randn(9, 9)
+        self.params['W2'] = weight_init_std * np.random.randn(9, 9)
         self.params['b'] = np.zeros((4, 9))
 
     def load_parameters_from_pickle(self):
@@ -20,47 +21,51 @@ class Network:
         with open(pickle_filepath, 'rb') as f:
             params = pickle.load(f)
 
-        self.params['W'] = params['W']
+        self.params['W1'] = params['W1']
+        self.params['W2'] = params['W2']
         self.params['b'] = params['b']
 
-    def loss(self, x, t):
+    def loss(self, hand, dora, t):
         u"""
-        損失関数の値を返します。
+        損失関数の値を返します
         """
-        y = self.predict(x)
+        y = self.predict(hand, dora)
 
         return self.cross_entropy_error(y, t)
 
-    def predict(self, x):
+    def predict(self, hand, dora):
         u"""
-        予測値を返します。
+        予測値を返します
+        @param hand 手牌
+        @param dora ドラ
         """
-        W, b = self.params['W'], self.params['b']
+        W1, W2, b = self.params['W1'], self.params['W2'], self.params['b']
 
-        a = np.dot(x, W) + b
+        a = np.dot(hand, W1) + np.dot(dora, W2) + b
         y = self.softmax(a)
 
         return y
 
-    def return_gradient(self, x, t):
-        loss_W = lambda W: self.loss(x, t)
+    def return_gradient(self, hand, dora, t):
+        loss_W = lambda W: self.loss(hand, dora, t)
         
         grads = {}
-        grads['W'] = self.numerical_gradient(loss_W, self.params['W'])
-        grads['b'] = self.numerical_gradient(loss_W, self.params['b'])
+        grads['W1'] = self.numerical_gradient(loss_W, self.params['W1'])
+        grads['W2'] = self.numerical_gradient(loss_W, self.params['W2'])
+        grads['b']  = self.numerical_gradient(loss_W, self.params['b'])
         
         return grads
 
     def softmax(self, x):
         u"""
-        正規化する関数です。
+        正規化する関数です
         """
         x = x - np.max(x)
         return np.exp(x) / np.sum(np.exp(x))
 
     def cross_entropy_error(self, y, t):
         u"""
-        損失関数には交差エントロピーを用います。
+        損失関数には交差エントロピーを用います
         """
         delta = 1e-7
         return -np.sum(t * np.log(y + delta))

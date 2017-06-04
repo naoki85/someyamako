@@ -1,17 +1,21 @@
 # -*- coding:utf-8 -*-
 import os
-from bottle import route, get, post, run, template, request, static_file, redirect
-from mahjang import *
-from output import *
+from bottle    import route, get, post, run, template, request, static_file, redirect
+from mahjang   import *
+from network   import *
+from output    import *
 from http_conf import *
 
 @get('/')
 @get('/index')
 def index():
     mahjang = Mahjang()
+    network = Network()
     dora = mahjang.get_dora()
     random_hand = mahjang.random_set_hand()
-    return template('index', random_hand=random_hand, dora=dora)
+    matrix_hand, matrix_dora = mahjang.list_convert_matrix(random_hand, dora)
+    predict_list = network.predict(matrix_hand, matrix_dora)
+    return template('index', random_hand=random_hand, dora=dora, predict_list=predict_list)
 
 @post('/show_result')
 def show_result():

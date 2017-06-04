@@ -25,4 +25,5 @@
         <div id="input_hidden_area"></div>
         <input class="btn btn-info" type="submit" value="決定" />
     </form>
+    <div>{{predict_list}}</div>
 </div>

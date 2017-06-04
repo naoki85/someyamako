@@ -3,15 +3,14 @@ import os, csv, pickle
 
 class Output:
     u"""
-    出力層のクラスです。
+    出力層のクラスです
     """
     def __init__(self):
-        # CSVを格納しているディレクトリのパス
         self.csv_dirpath = os.getcwd() + '/csv'
 
     def write_in_csv(self, my_hand, tile, dora):
         u"""
-        結果をCSVに書き込みます。
+        結果をCSVに書き込みます
         """
         csv_filepath = self.csv_dirpath + '/results.csv'
         csvlist = []
@@ -26,15 +25,15 @@ class Output:
 
         return
 
-    def write_in_pickle(self, weight_parameter, bias_parameter):
+    def write_in_pickle(self, hand_param, dora_param, bias_parameter):
         u"""
-        結果をpickelに書き込みます。
+        結果をpickelに書き込みます
         """
         pickle_filepath = os.getcwd() + '/pickle/output_results.pickle'
         results = {}
-        results['W'] = weight_parameter
-        results['b'] = bias_parameter
+        results['W1'] = hand_param
+        results['W2'] = dora_param
+        results['b']  = bias_parameter
 
         with open(pickle_filepath, 'wb') as f:
             writer = pickle.dump(results, f)
-
