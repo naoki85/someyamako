@@ -25,5 +25,20 @@
         <div id="input_hidden_area"></div>
         <input class="btn btn-info" type="submit" value="決定" />
     </form>
-    <div>{{predict_list}}</div>
+    <hr>
+    <table class="table">
+            % tiles = [[11,12,13,14,15,16,17,18,19], [21,22,23,24,25,26,27,28,29], [31,32,33,34,35,36,37,38,39], [41,42,43,44,45,46,47]]
+            % for i in range(0, 4):
+            <tr>
+            % for j in range(0, len(tiles[i])):
+            <td>
+                <div class="tile">
+                    <img src="img/{{tiles[i][j]}}.gif">
+                </div>
+                <p>{{round(predict_list[tiles[i][j]] * 100,2)}} %</p>
+            </td>
+            % end
+            </tr>
+            % end
+    </table>
 </div>

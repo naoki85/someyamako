@@ -15,7 +15,8 @@ def index():
     random_hand = mahjang.random_set_hand()
     matrix_hand, matrix_dora = mahjang.list_convert_matrix(random_hand, dora)
     predict_list = network.predict(matrix_hand, matrix_dora)
-    return template('index', random_hand=random_hand, dora=dora, predict_list=predict_list)
+    predict_list_sorted = mahjang.convert_dict_from_matrix(predict_list)
+    return template('index', random_hand=random_hand, dora=dora, predict_list=predict_list_sorted)
 
 @post('/show_result')
 def show_result():

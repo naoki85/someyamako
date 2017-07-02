@@ -140,3 +140,27 @@ class Mahjang:
 
         return color_matrix, number_matrix
 
+    # def three_predict_values(self, matrix):
+    #     u"""
+    #     予測値の大きいものから3つ取り出します。
+    #     """
+    #     dict = self.convert_dict_from_matrix(matrix)
+    #     sorted_list = sorted(dict.items(), key=lambda x:x[1])
+    #     return sorted_list
+
+    def convert_dict_from_matrix(self, matrix):
+        u"""
+        ビューで表示するために予測した結果を、インデックスつきの辞書型に変換します。
+        予測値が大きい順に並べます。
+        """
+        ret_dict = {}
+
+        for i in range(0, len(matrix)):
+            for j in range(0, len(matrix[i])):
+                index = 10 * (i+1) + (j+1)
+                ret_dict[index] = matrix[i][j]
+                
+        return ret_dict
+
+
+
